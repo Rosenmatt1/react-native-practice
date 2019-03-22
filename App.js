@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import ListItem from './src/components/ListItem.js'
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
-type Props = {};
-
-export default class App extends Component <Props> {
+class App extends Component {
   state = {
     placeName: "",
     places: []
@@ -24,7 +17,7 @@ export default class App extends Component <Props> {
 
   placeSubmitHandler = () => {
     if (this.state.placeName.trim() === "") {
-      return 
+      return
     }
     this.setState(prevState => {
       return {
@@ -39,10 +32,9 @@ export default class App extends Component <Props> {
 
   render() {
     const placesOutput = this.state.places.map((place, idx) => (
-        <Text key={idx}>{place}</Text>
+      <Text key={idx}>{place}</Text>
     ))
     return (
-      
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <TextInput
@@ -60,6 +52,7 @@ export default class App extends Component <Props> {
         <View>
           {placesOutput}
         </View>
+        <ListItem />
       </View>
     );
   }
@@ -86,6 +79,8 @@ const styles = StyleSheet.create({
   }
 
 });
+
+export default App
 
 
 
