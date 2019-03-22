@@ -12,18 +12,37 @@ type Props = {};
 
 export default class App extends Component <Props> {
   state = {
-    placeName: ""
+    placeName: "",
+    places: []
   }
 
   placeNameChangeHandler = (e) => {
     this.setState({
-      placeName: e
+      placeName: e,
     })
-
   }
 
+  placeSubmitHandler = () => {
+    if (this.state.placeName.trim() === "") {
+      return 
+    }
+    this.setState(prevState => {
+      return {
+        places: prevState.places.concat(prevState.placeName)
+      }
+    })
+    // this.setState({
+    //   places: [...this.state.places, this.state.placeName]
+    // })
+  }
+
+
   render() {
+    const placesOutput = this.state.places.map((place, idx) => (
+        <Text key={idx}>{place}</Text>
+    ))
     return (
+      
       <View style={styles.container}>
         <View style={styles.inputContainer}>
           <TextInput
@@ -35,7 +54,11 @@ export default class App extends Component <Props> {
           <Button
             title="Add"
             style={styles.placeButton}
+            onPress={this.placeSubmitHandler}
           />
+        </View>
+        <View>
+          {placesOutput}
         </View>
       </View>
     );
@@ -50,8 +73,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   inputContainer: {
+    width: "100%",
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   placeInput: {
     width: "70%"
