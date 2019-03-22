@@ -10,7 +10,7 @@ const instructions = Platform.select({
 
 type Props = {};
 
-export default class App extends Component<Props>{
+export default class App extends Component <Props> {
   state = {
     placeName: ""
   }
@@ -25,31 +25,42 @@ export default class App extends Component<Props>{
   render() {
     return (
       <View style={styles.container}>
-        <View>
+        <View style={styles.inputContainer}>
           <TextInput
             placeholder="an awesome place"
-            style={{ width: 300 }}
+            style={styles.placeInput}
             value={this.state.placeName}
             onChangeText={this.placeNameChangeHandler}
           />
           <Button
             title="Add"
+            style={styles.placeButton}
           />
         </View>
       </View>
-        );
-      }
-    }
-    
+    );
+  }
+}
+
 const styles = StyleSheet.create({
-          container: {
-          padding: 35,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#F5FCFF',
-      },
-      
-    });
-    
-    
-    
+  container: {
+    padding: 35,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  inputContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between"
+  },
+  placeInput: {
+    width: "70%"
+  },
+  placeButton: {
+    width: "30%"
+  }
+
+});
+
+
+
