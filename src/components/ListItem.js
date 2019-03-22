@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import ListItem from './src/components/ListItem.js'
 
 const ListItem = (props) => (
   <View styles={styles.listItem}>
