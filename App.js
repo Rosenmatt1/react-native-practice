@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TextInput} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -10,56 +10,46 @@ const instructions = Platform.select({
 
 type Props = {};
 
-  export default class App extends Component <Props>{
-    state = {
-      placeName: ""
-    }
+export default class App extends Component<Props>{
+  state = {
+    placeName: ""
+  }
 
-    placeNameChangeHandler = (e) => {
-      this.setState({
-        placeName: e
-      })
-     
-    }
+  placeNameChangeHandler = (e) => {
+    this.setState({
+      placeName: e
+    })
+
+  }
 
   render() {
     return (
       <View style={styles.container}>
-        <TextInput 
-          placeholder="an awesome place"
-          style={{width: 300}}
-          value={this.state.placeName}
-          onChangeText={this.placeNameChangeHandler}
+        <View>
+          <TextInput
+            placeholder="an awesome place"
+            style={{ width: 300 }}
+            value={this.state.placeName}
+            onChangeText={this.placeNameChangeHandler}
           />
+          <Button
+            title="Add"
+          />
+        </View>
       </View>
-    );
-  }
-}
-
+        );
+      }
+    }
+    
 const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    padding: 30,
-    alignItems: 'center',
-    // flexDirection: 'column',
-    justifyContent: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-
-{/* <Text style={styles.welcome}>Welcome to Mateo Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text> */}
+          container: {
+          padding: 35,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#F5FCFF',
+      },
+      
+    });
+    
+    
+    
