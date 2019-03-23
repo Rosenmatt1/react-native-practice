@@ -17,7 +17,7 @@ class Form extends Component {
       return;
     }
     this.props.onPlaceAdded(this.state.placeName);
-  };
+  }
 
   render() {
     return (
@@ -34,7 +34,7 @@ class Form extends Component {
           onPress={this.placeSubmitHandler}
         />
       </View>
-    );
+    )
   }
 }
 
@@ -52,6 +52,6 @@ const styles = StyleSheet.create({
   placeButton: {
     width: "30%"
   }
-});
+})
 
-export default Form;
+export default Form
