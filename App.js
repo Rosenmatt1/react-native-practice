@@ -17,12 +17,36 @@ class App extends Component {
     })
   }
 
+  onItemDelete = (index) => {
+    // console.log("id", id)
+    // const removeItem = this.state.places.filter(element => {
+    //   console.log("element.id", element.id)
+    //   if (element.id === id) {
+    //   }
+    //   return !element
+    // })
+    // this.setState({
+    //   places: removeItem
+    // })
+    this.setState(prevState => {
+      return {
+        places: 
+        prevState.places.filter((place, i) => {
+          return i !== index
+        })
+      }
+    })
+  }
+
   render() {
     return (
       <View style={styles.container}>
 
         <Form onPlaceAdded={this.onPlaceAdded} />
-        <List places={this.state.places} />
+        <List 
+          places={this.state.places}
+          onItemDelete={this.onItemDelete}
+        />
 
       </View>
     );
