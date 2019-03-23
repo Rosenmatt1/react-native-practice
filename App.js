@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import ListItem from './src/components/ListItem.js'
+import Form from './src/components/Form.js'
 
 
 class App extends Component {
@@ -8,6 +9,7 @@ class App extends Component {
     placeName: "",
     places: []
   }
+
 
   placeNameChangeHandler = (e) => {
     this.setState({
@@ -24,35 +26,30 @@ class App extends Component {
         places: prevState.places.concat(prevState.placeName)
       }
     })
-    // this.setState({
-    //   places: [...this.state.places, this.state.placeName]
-    // })
   }
 
-
   render() {
+
     const placesOutput = this.state.places.map((place, idx) => (
-      <Text key={idx}>{place}</Text>
+      <ListItem key={idx} placeName={place} />
     ))
+    
     return (
       <View style={styles.container}>
-        <View style={styles.inputContainer}>
-          <TextInput
-            placeholder="an awesome place"
-            style={styles.placeInput}
-            value={this.state.placeName}
-            onChangeText={this.placeNameChangeHandler}
-          />
-          <Button
-            title="Add"
-            style={styles.placeButton}
-            onPress={this.placeSubmitHandler}
-          />
+
+        <Form 
+          // style={styles.inputContainer}
+          placeName={this.state.placeName}
+          placeNameChangeHandler={this.placeNameChangeHandler} 
+          placeSubmitHandler={this.placeSubmitHandler}
+        />
+
+        <View 
+          style={styles.listContainer}
+          placeName={this.state.placeName}>
+            {placesOutput}
         </View>
-        <View>
-          {placesOutput}
-        </View>
-        <ListItem />
+        
       </View>
     );
   }
@@ -65,17 +62,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#F5FCFF',
   },
-  inputContainer: {
+  listContainer: {
     width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
-  placeInput: {
-    width: "70%"
-  },
-  placeButton: {
-    width: "30%"
   }
 
 });
