@@ -9,7 +9,7 @@ class App extends Component {
     places: []
   }
 
-  placeAddedHandler = (placeName) => {
+  onPlaceAdded = (placeName) => {
     this.setState( prevState => {
       return {
         places: prevState.places.concat(placeName)
@@ -21,13 +21,8 @@ class App extends Component {
     return (
       <View style={styles.container}>
 
-        <Form
-          onPlaceAdded={this.placeAddedHandler}
-        />
-
-        <List
-          places={this.state.places}
-        />
+        <Form onPlaceAdded={this.onPlaceAdded} />
+        <List places={this.state.places} />
 
       </View>
     );
