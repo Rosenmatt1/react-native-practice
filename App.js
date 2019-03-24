@@ -3,54 +3,40 @@ import { StyleSheet, View } from 'react-native';
 import Form from './src/components/Form.js'
 import List from './src/components/List.js'
 
-
 class App extends Component {
   state = {
     places: []
-  }
+  };
 
-  onPlaceAdded = placeName => {
+  placeAddedHandler = placeName => {
     this.setState(prevState => {
       return {
         places: prevState.places.concat({
           key: String(Math.random()),
           value: placeName
         })
-      }
-    })
-  }
+      };
+    });
+  };
 
   onItemDelete = key => {
-    // console.log("id", id)
-    // const removeItem = this.state.places.filter(element => {
-    //   console.log("element.id", element.id)
-    //   if (element.id === id) {
-    //   }
-    //   return !element
-    // })
-    // this.setState({
-    //   places: removeItem
-    // })
     this.setState(prevState => {
       return {
         places: prevState.places.filter(place => {
-          // return i !== index
-          return place.key !== key
+          return place.key !== key;
         })
-      }
-    })
-  }
+      };
+    });
+  };
 
   render() {
     return (
       <View style={styles.container}>
-
-        <Form onPlaceAdded={this.onPlaceAdded} />
+        <Form onPlaceAdded={this.placeAddedHandler} />
         <List
           places={this.state.places}
           onItemDelete={this.onItemDelete}
         />
-
       </View>
     );
   }

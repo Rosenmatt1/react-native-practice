@@ -9,20 +9,20 @@ class Form extends Component {
   placeNameChangedHandler = val => {
     this.setState({
       placeName: val
-    })
-  }
+    });
+  };
 
   placeSubmitHandler = () => {
     if (this.state.placeName.trim() === "") {
       return;
     }
+
     this.props.onPlaceAdded(this.state.placeName);
-  }
+  };
 
   render() {
     return (
       <View style={styles.inputContainer}>
-
         <TextInput
           placeholder="An awesome place"
           value={this.state.placeName}
@@ -34,9 +34,8 @@ class Form extends Component {
           style={styles.placeButton}
           onPress={this.placeSubmitHandler}
         />
-        
       </View>
-    )
+    );
   }
 }
 
