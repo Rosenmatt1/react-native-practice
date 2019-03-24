@@ -9,15 +9,18 @@ class App extends Component {
     places: []
   }
 
-  onPlaceAdded = (placeName) => {
-    this.setState( prevState => {
+  onPlaceAdded = placeName => {
+    this.setState(prevState => {
       return {
-        places: prevState.places.concat(placeName)
+        places: prevState.places.concat({
+          key: String(Math.random()),
+          value: placeName
+        })
       }
     })
   }
 
-  onItemDelete = (index) => {
+  onItemDelete = key => {
     // console.log("id", id)
     // const removeItem = this.state.places.filter(element => {
     //   console.log("element.id", element.id)
@@ -30,9 +33,9 @@ class App extends Component {
     // })
     this.setState(prevState => {
       return {
-        places: 
-        prevState.places.filter((place, i) => {
-          return i !== index
+        places: prevState.places.filter(place => {
+          // return i !== index
+          return place.key !== key
         })
       }
     })
@@ -43,7 +46,7 @@ class App extends Component {
       <View style={styles.container}>
 
         <Form onPlaceAdded={this.onPlaceAdded} />
-        <List 
+        <List
           places={this.state.places}
           onItemDelete={this.onItemDelete}
         />

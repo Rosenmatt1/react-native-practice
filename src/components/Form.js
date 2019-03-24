@@ -22,6 +22,7 @@ class Form extends Component {
   render() {
     return (
       <View style={styles.inputContainer}>
+
         <TextInput
           placeholder="An awesome place"
           value={this.state.placeName}
@@ -33,6 +34,7 @@ class Form extends Component {
           style={styles.placeButton}
           onPress={this.placeSubmitHandler}
         />
+        
       </View>
     )
   }
