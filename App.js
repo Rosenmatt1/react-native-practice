@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Form from './src/components/Form.js'
 import List from './src/components/List.js'
+// import Modal from './src/components/Modal.js'
 // import placeImage from './src/assets/chuck-norris.png'
 
 class App extends Component {
   state = {
-    places: []
+    places: [],
+    selectedPlace: null
   };
 
   placeAddedHandler = placeName => {
@@ -23,24 +25,37 @@ class App extends Component {
     });
   };
 
-  onItemDelete = key => {
+  // onItemDelete = key => {
+  //   this.setState(prevState => {
+  //     return {
+  //       places: prevState.places.filter(place => {
+  //         return place.key !== key;
+  //       })
+  //     };
+  //   });
+  // };
+
+  selectedItem = key => {
     this.setState(prevState => {
       return {
-        places: prevState.places.filter(place => {
-          return place.key !== key;
+        selectedPlace: prevState.places.find(place => {
+          return place.key === key
         })
-      };
-    });
-  };
+      }
+    })
+  }
 
   render() {
     return (
       <View style={styles.container}>
+        <Modal selectedPlace={this.state.selectedPlace}/>
         <Form onPlaceAdded={this.placeAddedHandler} />
         <List
           places={this.state.places}
-          onItemDelete={this.onItemDelete}
+          // onItemDelete={this.onItemDelete}
+          selectedItem={this.selectedItem}
         />
+       
       </View>
     );
   }

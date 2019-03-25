@@ -7,7 +7,7 @@ const Modal = props => {
   return (
     <Modal>
       <View>
-        <Image src={props.placeImage}/>
+        <Image source={props.selectedPlace ? props.selectedPlace.placeImage : null} />
         <Text>{props.placeName}</Text>
         <Button />
         <Button />
