@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Form from './src/components/Form.js'
 import List from './src/components/List.js'
-import placeImage from './src/assets/chuck-norris.png'
+// import placeImage from './src/assets/chuck-norris.png'
 
 class App extends Component {
   state = {
@@ -15,7 +15,9 @@ class App extends Component {
         places: prevState.places.concat({
           key: String(Math.random()),
           name: placeName,
-          image: placeImage
+          image: {
+            url: "https://image.freepik.com/free-photo/tropical-beach-samoa_53876-13199.jpg"
+          }
         })
       };
     });
