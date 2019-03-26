@@ -48,7 +48,8 @@ class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Modal selectedPlace={this.state.selectedPlace}/>
+      
+        {/* <Modal selectedPlace={this.state.selectedPlace}/> */}
         <Form onPlaceAdded={this.placeAddedHandler} />
         <List
           places={this.state.places}
