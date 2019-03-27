@@ -16,8 +16,9 @@ class Form extends Component {
     if (this.state.placeName.trim() === "") {
       return;
     }
-
+    console.log("The add button")
     this.props.onPlaceAdded(this.state.placeName);
+    
   };
 
   render() {
