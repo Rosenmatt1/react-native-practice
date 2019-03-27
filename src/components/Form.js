@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { View, TextInput, Button, StyleSheet } from "react-native";
+import { View, TextInput, Button, StyleSheet, TouchableOpacity } from "react-native";
+import Icon from './react-native-vector-icons/Ionicons'
 
 class Form extends Component {
   state = {
@@ -35,6 +36,8 @@ class Form extends Component {
           style={styles.placeButton}
           onPress={this.placeSubmitHandler}
         />
+
+        <Button />
       </View>
     );
   }
